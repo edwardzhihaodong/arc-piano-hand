@@ -1,5 +1,6 @@
 import cv2
 import subprocess
+import os
 # from python_imagesearch import four_point_transform
 from skimage.filters import threshold_local #check this 
 import numpy as np
@@ -201,9 +202,11 @@ while True:
 						line += 1
 					index2 = line - 1
 					np.append(breaks, (index1+index2)/2)'''
-			cv2.imwrite("C:\\Users\\anish\\OneDrive\\Desktop\\twinkle.png", warped, [cv2.IMWRITE_PNG_COMPRESSION, 0])
-			im = Image.open("C:\\Users\\anish\\OneDrive\\Desktop\\twinkle.png")
-			im.save("C:\\Users\\anish\\OneDrive\\Desktop\\twinkleDPI.png", dpi=(300, 300))
+			output_location = r"C:\Users\Edward\Desktop\Piano Hand Output\twinkle.png"
+			print("\n\nA\nA\nA\nA\nA\n\n")
+			cv2.imwrite(output_location, warped, [cv2.IMWRITE_PNG_COMPRESSION, 0])
+			im = Image.open(output_location)
+			im.save(output_location, dpi=(300, 300))
 		break
 	elif cv2.waitKey(33) &0xFF == ord('b'):
 		break
@@ -211,4 +214,9 @@ while True:
 video.release()
 cv2.destroyAllWindows()
 # end of camera, convert img to mxl
-subprocess.call("converter.py",shell=True)
+print("calling image to XML")
+command = r'cmd /c ""C:\Users\Edward\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Audiveris\Audiveris.lnk" -batch -output "C:\\Users\\Edward\\Desktop\\Piano Hand Output" -export -- "C:\\Users\\Edward\\Desktop\\Piano Hand Output\\twinkle.png"'
+#command = r'"C:\Users\Edward\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Audiveris\Audiveris.lnk" -batch -output "C:\\Users\\Edward\\Desktop\\Piano Hand Output" -export -- "C:\\Users\\Edward\\Desktop\\Piano Hand Output\\twinkle.png"'
+os.system(command)
+#os.system("C:\\Users\\Edward\\arc-piano-hand\\perception\\img2mxl.py")
+#subprocess.call("C:\\Users\\Edward\\arc-piano-hand\\perception\\img2mxl.py",shell=True)
