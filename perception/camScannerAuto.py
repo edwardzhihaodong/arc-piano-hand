@@ -202,21 +202,22 @@ while True:
 						line += 1
 					index2 = line - 1
 					np.append(breaks, (index1+index2)/2)'''
-			output_location = r"C:\Users\Edward\Desktop\Piano Hand Output\twinkle.png"
+			output_location = fr"C:\Users\Error\Desktop\OEMER\PNG Files\Test.png"
 			print("\n\nA\nA\nA\nA\nA\n\n")
 			cv2.imwrite(output_location, warped, [cv2.IMWRITE_PNG_COMPRESSION, 0])
 			im = Image.open(output_location)
 			im.save(output_location, dpi=(300, 300))
 		break
-	elif cv2.waitKey(33) &0xFF == ord('b'):
+	elif cv2.waitKey(33) &0xFF == ord('b'): # Exits the camera please keep this in mind.
 		break
 
 video.release()
 cv2.destroyAllWindows()
 # end of camera, convert img to mxl
 print("calling image to XML")
-command = r'cmd /c ""C:\Users\Edward\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Audiveris\Audiveris.lnk" -batch -output "C:\\Users\\Edward\\Desktop\\Piano Hand Output" -export -- "C:\\Users\\Edward\\Desktop\\Piano Hand Output\\twinkle.png"'
+#command = fr'cmd /c ""C:\Users\Edward\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Audiveris\Audiveris.lnk" -batch -output "C:\\Users\\Edward\\Desktop\\Piano Hand Output" -export -- "C:\\Users\\Edward\\Desktop\\Piano Hand Output\\twinkle.png"'
 #command = r'"C:\Users\Edward\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Audiveris\Audiveris.lnk" -batch -output "C:\\Users\\Edward\\Desktop\\Piano Hand Output" -export -- "C:\\Users\\Edward\\Desktop\\Piano Hand Output\\twinkle.png"'
+command = fr'oemer -o "C:\Users\Error\Desktop\OEMER\XML Files\Test.xml" --without-deskew "C:\Users\Error\Desktop\OEMER\PNG Files\25.HotCrossBuns.png"'
 os.system(command)
 #os.system("C:\\Users\\Edward\\arc-piano-hand\\perception\\img2mxl.py")
 #subprocess.call("C:\\Users\\Edward\\arc-piano-hand\\perception\\img2mxl.py",shell=True)
